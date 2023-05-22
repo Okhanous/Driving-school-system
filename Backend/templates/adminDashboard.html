@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color:  #82bcf6;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            background-color: hsl(197, 100%, 94%);
+            padding: 40px;
+            border-radius: 5px;
+            margin-top: 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            justify-content: center; /* Add this line */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container h1 {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid #007bff;
+            box-shadow: none;
+            padding-left: 0;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+
+        button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #logo img {
+            position:fixed;
+            animation: floatLogo 10s infinite ease;
+        }
+
+        @keyframes floatLogo {
+            0% {
+            transform: translate(-100%, -50%);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(360deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-100%, -50%);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <img src="/images/logo2.png" alt="Logo 2">
+    </div>
+    <div class="container">
+        <h1 class="mt-5">Welcome, {{.User.Prenom}} {{.User.Nom}}!</h1>
+        <form class="mt-4" action="http://localhost:8080/adminDashboard" method="post">
+            <input type="hidden" name="action" value="inscriptionSecretaire">
+            <button type="submit">Inscription Secrétaire</button>
+        </form>
+
+        <form class="mt-4" action="http://localhost:8080/adminDashboard" method="post">
+            <input type="hidden" name="action" value="afficherSecretaires">
+            <button type="submit">Afficher Secretaires</button>
+        </form>
+    </div>
+    
+</body>
+</html>
